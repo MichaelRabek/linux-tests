@@ -1,0 +1,11 @@
+# Binaries
+*repro
+*sg_race_trigger
+*.out
+
+# Compilation intermediates
+*.o
+
+# Logs
+*.log
+
