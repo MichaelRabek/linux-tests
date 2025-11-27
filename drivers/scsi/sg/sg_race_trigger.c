@@ -123,7 +123,7 @@ int find_scsi_debug_sg() {
 void setup_device() {
     printf("Setting up scsi_debug tape device...\n");
     system("rmmod scsi_debug 2>/dev/null");
-    system("modprobe scsi_debug ptype=1 delay=1000 ndelay=500000 max_luns=1 num_tgts=1");
+    system("modprobe scsi_debug ptype=1 delay=1000 ndelay=1000000000 max_luns=1 num_tgts=1");
     sleep(2);
     
     /* Find the sg device */
