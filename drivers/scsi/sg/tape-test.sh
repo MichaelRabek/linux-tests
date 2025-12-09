@@ -3,7 +3,7 @@
 # Define the number of files N
 N=12
 
-while true ; do cat /proc/scsi/sg/debug ; done > sg.log &
+while true ; do cat /proc/scsi/sg/debug ; done > $PWD/sg.log &
 
 mkdir -p tape
 ltfs -o devname=1097007216 ./tape
@@ -36,7 +36,7 @@ kill %1
 # field=3
 field=3
 
-for n in $(grep -E "elap|dur" ~/sg.log | cut -d/ -f${field} | sed -e 's/^\([0-9][0-9]*\).*$/\1/') ; do
-	[ $n -gt 20000 -o $n -lt 0 ] 2>/dev/null && echo $n
+for n in $(grep -E "elap|dur" $PWD/sg.log | cut -d/ -f${field} | sed -e 's/^\([0-9][0-9]*\).*$/\1/') ; do
+	[ $n -gt 20000 -o $n -lt 0 ] 2>/dev/null && echo "Bogus elapsed time: $n"
 done
 
